@@ -8,23 +8,36 @@
   <style>
     img {
       position: absolute;
-      top: 100px;
-      left: 100px;
-      width: 600px;
+      top: 50px;
+      left: 50px;
+      width: 500px;
       opacity: 0.6;
     }
     svg {
       position: absolute;
+      top: 50px;
+      left: 50px;
+      width: 500px;
+    }
+    ul {
+      position: absolute;
       top: 100px;
-      left: 100px;
+      left: 600px;
       width: 600px;
     }
+    li {
+      font-size: 1.5em;
+      cursor: pointer;
+    }
+    #puddle, #shadow-legs, #cat, #face, #eyes, #pupils, #nose, #mouth, #octo, #drop {
+      display: none;
+    }
+
   </style>
 </head>
 <body>
   <img src="GitHub.svg">
   <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" viewBox="-0.2 -1 379 334">
-    <!--
   	<path id="puddle" fill="#9CDAF1" d="m296.94 295.43c0 20.533-47.56 37.176-106.22 37.176-58.67
   	  0-106.23-16.643-106.23-37.176s47.558-37.18 106.23-37.18c58.66 0 106.22 16.65 106.22 37.18z"></path>
 
@@ -94,8 +107,39 @@
     </path>
 
     <path id="drop" fill="#9CDAF1" d="m69.369 186.12l-3.066 10.683s-.8 3.861 2.84 4.546c3.8-.074 3.486-3.627 3.223-4.781z"></path>
--->
+
   	<path id="drop-in-red" fill="#9C0000" d="m79.369 196.12l-3.066 10.683s-.8 3.861 2.84 4.546c3.8-.074 3.486-3.627 3.223-4.781z"></path>
   </svg>
+  <ul>
+    <li>puddle</li>
+    <li>shadow-legs</li>
+    <li>cat</li>
+    <li>face</li>
+    <li>eyes</li>
+    <li>pupils</li>
+    <li>nose</li>
+    <li>mouth</li>
+    <li>octo</li>
+    <li>drop</li>
+    <li>drop-in-red</li>
+  </ul>
+
+  <script>
+    (() => {
+      document.querySelector('ul').addEventListener('click', (evt) => {
+        let pathName = ''
+        let pathObject
+        if (evt.target.tagName === 'LI') {
+          pathName = evt.target.textContent
+        }
+        if (pathName !== '') {
+          pathObject = document.querySelector(`#${pathName}`)
+          if (pathObject) {
+            pathObject.style.display = (pathObject.style.display === 'block') ? 'none' : 'block';
+          }
+        }
+      })
+    })()
+  </script>
 </body>
 </html>
